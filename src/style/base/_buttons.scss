@@ -1,0 +1,65 @@
+@use "../abstracts" as a;
+@use "typography" as *;
+
+%outline {
+  border: 2px solid;
+  background-color: a.$light;
+}
+
+button,
+.button {
+  pointer-events: all;
+  cursor: pointer;
+  padding: calc(a.$xxs/2) a.$xxs;
+  border-radius: 10px;
+  text-decoration: none;
+
+  @extend %outline;
+  @include a.transition(0.2s, ease-out);
+
+  &:not(.small) {
+    padding: a.$xxs a.$xs;
+    @extend %h6;
+
+    &.large {
+      padding: a.$xxs a.$sm;
+      @extend %h4;
+      
+      &:not(.fill) { border-width: 3px; }
+    }
+  }
+
+  &:hover {
+    color: lighten(a.$grey-dark, 20%);
+    border-color: lighten(a.$grey-dark, 20%);
+  }
+
+  &.color {
+    color: a.$tiffany;
+    border-color: a.$tiffany;
+
+    &:not(.fill):hover {
+      color: lighten(a.$tiffany, 20%);
+      border-color: lighten(a.$tiffany, 20%);
+    }
+
+    &.fill {
+      background-color: a.$tiffany;
+
+      &:hover { background-color: lighten(a.$tiffany, 10%); }
+    }
+  }
+
+  &.fill {
+    border: none;
+    color: a.$light;
+    background-color: a.$grey-dark;
+
+    &:hover { background-color: darken(a.$grey-dark, 10%); }
+  }
+
+  &.disabled {
+    pointer-events: none;
+    opacity: 0.3;
+  }
+}

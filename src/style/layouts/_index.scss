@@ -1,0 +1,30 @@
+@use "../abstracts" as *;
+@use "../base" as *;
+
+:root {
+  color-scheme: light;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+
+  > #app {
+    width: 100%;
+    
+    @include md {
+      padding-top: $lg;
+      padding-bottom: 0;
+    }
+    
+    @include sm { padding-top: $md; }
+  }
+}
