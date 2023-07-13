@@ -2,7 +2,10 @@
 
 $type-mult: 1.333;
 
-
+%mono {
+    font-family: "Basier Circle Mono", monospace;
+    font-size: 0.8rem;
+}
 
 html {
   font-family: "Basier Circle", Inter, system-ui, Arial, sans-serif;
@@ -23,10 +26,7 @@ p,
   margin-bottom: a.$xxs;
 
   &.mono,
-  &.small {
-    font-family: "Basier Circle Mono", monospace;
-    font-size: 0.8rem;
-  }
+  &.small { @extend %mono; }
   &.big { font-size: 1.2rem; }
 
   @include a.md { font-size: 1.15rem; }
@@ -124,6 +124,45 @@ em,
 i { font-style: italic; }
 
 .regular { font-weight: 400; }
+
+%code {
+    @extend %mono;
+    color: a.$grey-dark;
+}
+
+/* Inline */
+p,
+ul li,
+ol li {
+  code,
+  .code {
+    @extend %code;
+    
+    padding: calc(a.$xxs / 4) calc(0.75 * a.$xxs);
+    background-color: a.$grey-light;
+    border-radius: 2px;
+  }
+}
+
+pre  {
+    code,
+    .code {
+	@extend %code;
+
+	display: block;
+	overflow: auto;
+	padding: a.$xs;
+	color: a.$copy;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	background: a.$grey-light;
+	border-radius: 5px;
+    }
+}
+
 
 ul {
   list-style-type: disc;
